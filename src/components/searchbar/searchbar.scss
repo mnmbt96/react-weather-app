@@ -1,0 +1,35 @@
+.search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.5rem 1rem;
+
+  .seachbar {
+    padding: 0.5rem !important;
+    width: 80%;
+    height: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-right: 1rem;
+  }
+
+  .seachbar:focus {
+    outline: none;
+  }
+  .current-location {
+    font-size: 1.7rem;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+
+  .current-location:hover,
+  .current-location:active {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .search-container {
+    margin: 1rem 3rem;
+  }
+}

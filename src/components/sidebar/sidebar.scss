@@ -1,0 +1,48 @@
+.sidebar-container {
+  background-image: radial-gradient(73% 147%, #eadfdf 59%, #ece2df 100%),
+    radial-gradient(
+      91% 146%,
+      rgba(255, 255, 255, 0.5) 47%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  background-blend-mode: screen;
+  border-right: 1px solid gray;
+
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transition: transform 1s ease-in-out;
+  z-index: 2;
+
+  .sidebar-icons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    .sidebar-open {
+      font-size: 1.5rem;
+    }
+
+    .sidebar-open:hover {
+      transform: scale(1.1);
+      transition: all 0.3s ease 0s;
+    }
+  }
+
+  .weather-title {
+    font-size: 2rem;
+    margin: 0.5rem 1rem;
+  }
+}
+
+.closed {
+  transform: translateX(-30vw);
+}
+
+@media screen and (max-width: 550px) {
+  .weather-title {
+    margin-left: 3rem !important;
+  }
+}

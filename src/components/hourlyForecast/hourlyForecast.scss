@@ -1,0 +1,52 @@
+.hourly-container {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 2rem 5rem 1rem 5rem;
+
+  .title {
+    border-bottom: 0.5px solid gray;
+    margin: 0 1rem;
+    text-transform: uppercase;
+  }
+
+  .hourly-forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    overflow-x: auto;
+    padding: 1rem;
+
+    .hourly-component {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .hour {
+        margin: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .temperature {
+        margin: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .weather {
+        width: 3rem;
+      }
+    }
+
+    .hourly-component:first-child {
+      margin-left: 1rem;
+    }
+
+    .hourly-component:last-child {
+      margin-right: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 884px) {
+  .hourly-container {
+    margin: 1rem 3rem;
+  }
+}

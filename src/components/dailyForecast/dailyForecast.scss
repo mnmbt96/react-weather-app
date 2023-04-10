@@ -1,0 +1,45 @@
+.daily-container {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin: 0.3rem 1rem 1rem 5rem;
+  width: 100%;
+
+  .title {
+    border-bottom: 0.5px solid gray;
+    margin: 0 1rem;
+    text-transform: uppercase;
+    height: 7%;
+  }
+  .daily-forecast {
+    height: 93%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .daily {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .daily:last-child {
+      border-bottom: none;
+    }
+    .day {
+      margin: 0;
+    }
+    .weather-condition {
+      width: 3rem;
+    }
+    .temp-high-low {
+      margin: 0;
+    }
+  }
+}
+@media screen and (max-width: 884px) {
+  .daily-container {
+    margin: 0.3rem 3rem 0.3rem 3rem;
+    width: auto;
+  }
+}
