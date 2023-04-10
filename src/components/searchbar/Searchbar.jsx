@@ -3,12 +3,16 @@ import { useState } from "react";
 import { GrLocation } from "react-icons/gr";
 import "./searchbar.css";
 
-const Searchbar = ({ setQuery }) => {
+const Searchbar = ({ setQuery, setSidebarOpen, windowWidth }) => {
   const [city, setCity] = useState("");
 
   const handleSearchClick = (e) => {
     if (city !== "") setQuery({ q: city });
     e.target.value = " ";
+
+    if (e.key === "Enter") {
+      windowWidth <= 550 ? setSidebarOpen(false) : "";
+    }
   };
 
   const handleLocationClick = () => {
@@ -23,6 +27,7 @@ const Searchbar = ({ setQuery }) => {
         });
       });
     }
+    if (windowWidth <= 550) setSidebarOpen(false);
   };
 
   return (

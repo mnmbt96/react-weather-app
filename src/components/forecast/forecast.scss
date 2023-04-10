@@ -1,6 +1,7 @@
 .forecast-container {
   background-image: linear-gradient(to top, #fbd7c7 0%, #9addfc 100%);
   height: 100vh;
+  overflow: auto;
 
   .icons {
     width: 100vw;

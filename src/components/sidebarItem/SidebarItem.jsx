@@ -2,14 +2,16 @@ import React from "react";
 import { formatToLocalTime } from "../../weatherData/weatherData";
 import "./sidebarItem.css";
 
-const SidebarItem = ({ wt, index, setQuery }) => {
+const SidebarItem = ({ wt, index, setQuery, setSidebarOpen, windowWidth }) => {
   const weather = wt.data;
+
+  const handleClick = () => {
+    setQuery({ q: weather.name });
+
+    if (windowWidth <= 550) setSidebarOpen(false);
+  };
   return (
-    <div
-      className="sidebar-item"
-      key={index}
-      onClick={() => setQuery({ q: weather.name })}
-    >
+    <div className="sidebar-item" key={index} onClick={handleClick}>
       <div className="locations-time-weather">
         <h6 className="location">{weather.name}</h6>
         <p className="localtime">

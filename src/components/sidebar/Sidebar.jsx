@@ -26,9 +26,10 @@ const Sidebar = ({
       className={`sidebar-container ${sidebarOpen ? "" : "closed"}`}
       style={{
         width: sidebarWidth,
-        position: windowWidth <= 500 ? "absolute" : "fixed",
+        position: windowWidth <= 550 ? "absolute" : "fixed",
         boxShadow: boxShadow,
       }}
+      onClose={() => setSidebarOpen(false)}
     >
       <div className="sidebar-icons">
         <BiSidebar
@@ -37,9 +38,19 @@ const Sidebar = ({
         />
       </div>
       <h1 className="weather-title">Weather</h1>
-      <Searchbar setQuery={setQuery} />
+      <Searchbar
+        setQuery={setQuery}
+        setSidebarOpen={setSidebarOpen}
+        windowWidth={windowWidth}
+      />
       {sidebarWeather.map((wt, index) => (
-        <SidebarItem wt={wt} key={index} setQuery={setQuery} />
+        <SidebarItem
+          wt={wt}
+          key={index}
+          setQuery={setQuery}
+          setSidebarOpen={setSidebarOpen}
+          windowWidth={windowWidth}
+        />
       ))}
     </div>
   );
