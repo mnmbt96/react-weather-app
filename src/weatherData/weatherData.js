@@ -8,7 +8,17 @@ const VERSION_30 = "3.0"; // pram(onecall)
 const getWeatherData = (version, infoType, searchParams) => {
   const url = new URL(`${BASE_URL}/${version}/${infoType}`);
   url.search = new URLSearchParams({ ...searchParams, appid: WEATHER_API_KEY });
-  return fetch(url).then((res) => res.json());
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(error);
+    });
 };
 
 const formatCurrentWeather = (data) => {

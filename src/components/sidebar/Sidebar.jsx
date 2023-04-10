@@ -16,7 +16,7 @@ const Sidebar = ({
     sidebarWidth = "30vw";
   } else if (sidebarOpen && windowWidth <= 550) {
     sidebarWidth = "70vw";
-    boxShadow = "2px 0 10px black";
+    boxShadow = "0.5px 0 5px black";
   } else if (!sidebarOpen) {
     sidebarWidth = "0";
   }
@@ -29,7 +29,7 @@ const Sidebar = ({
         position: windowWidth <= 550 ? "absolute" : "fixed",
         boxShadow: boxShadow,
       }}
-      onClose={() => setSidebarOpen(false)}
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="sidebar-icons">
         <BiSidebar

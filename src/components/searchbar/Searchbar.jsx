@@ -1,17 +1,18 @@
 import React from "react";
-import { useState } from "react";
+import { useRef } from "react";
 import { GrLocation } from "react-icons/gr";
 import "./searchbar.css";
 
 const Searchbar = ({ setQuery, setSidebarOpen, windowWidth }) => {
-  const [city, setCity] = useState("");
+  const cityNameRef = useRef();
 
   const handleSearchClick = (e) => {
-    if (city !== "") setQuery({ q: city });
-    e.target.value = " ";
+    let inputCity = cityNameRef.current.value;
 
     if (e.key === "Enter") {
-      windowWidth <= 550 ? setSidebarOpen(false) : "";
+      if (inputCity !== "") setQuery({ q: inputCity });
+      windowWidth <= 550 ? setSidebarOpen(false) : setSidebarOpen(true);
+      cityNameRef.current.value = null;
     }
   };
 
@@ -36,8 +37,7 @@ const Searchbar = ({ setQuery, setSidebarOpen, windowWidth }) => {
         className="seachbar"
         type="text"
         placeholder="🔍 Search for a city name"
-        value={city}
-        onChange={(e) => setCity(e.currentTarget.value)}
+        ref={cityNameRef}
         onKeyDown={handleSearchClick}
       />
       <GrLocation className="current-location" onClick={handleLocationClick} />

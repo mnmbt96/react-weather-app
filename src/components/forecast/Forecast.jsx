@@ -19,15 +19,18 @@ const Forecast = ({
   } else if (windowWidth <= 550 && !sidebarOpen) {
     margin = "0";
   } else if (windowWidth <= 550 && sidebarOpen) {
-    filter = "blur(1.5px)";
+    filter = "blur(0.8px)";
   }
 
   return (
     <div
       className="forecast-container"
       style={{ margin: margin, filter: sidebarOpen ? filter : "" }}
+      onClick={() =>
+        windowWidth <= 550 && sidebarOpen ? setSidebarOpen(false) : ""
+      }
     >
-      {sidebarOpen ? (
+      {sidebarOpen && (
         <div className="units">
           <a className="unit" name="metric" onClick={handleUnitsChange}>
             ℃
@@ -37,9 +40,9 @@ const Forecast = ({
             ℉
           </a>
         </div>
-      ) : null}
+      )}
       <div className="current-info">
-        {sidebarOpen ? null : (
+        {!sidebarOpen && (
           <div className="icons">
             <BiSidebar
               className="sidebar-open"

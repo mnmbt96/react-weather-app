@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import Forecast from "./components/forecast/Forecast";
+import Sidebar from "./components/sidebar/Sidebar";
 import getFormattedWeatherData from "./weatherData/weatherData";
 import { getFormattedWeatherDataForSidebar } from "./weatherData/weatherData";
-import Sidebar from "./components/sidebar/Sidebar";
+import "./App.css";
 
 function App() {
   const [query, setQuery] = useState({ q: "Vancouver" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
 
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -23,22 +24,22 @@ function App() {
 
   useEffect(() => {
     const fetchWeatherSidebar = async (city) => {
-      await getFormattedWeatherDataForSidebar({ ...city, units }).then(
-        (data) => {
-          setSidebarWeather((prevData) => {
-            return [...prevData, { data }];
-          });
-        }
-      );
+      const data = await getFormattedWeatherDataForSidebar({
+        ...city,
+        units,
+      });
+      setSidebarWeather((prevData) => [...prevData, { data }]);
+      setError(null);
     };
+
     cities.map((city) => fetchWeatherSidebar(city));
   }, [cities]);
 
   useEffect(() => {
     const fetchWeather = async () => {
-      await getFormattedWeatherData({ ...query, units }).then((data) => {
-        setWeather(data);
-      });
+      const data = await getFormattedWeatherData({ ...query, units });
+      setWeather(data);
+      setError(null);
     };
     fetchWeather();
   }, [query, units]);
