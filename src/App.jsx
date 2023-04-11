@@ -9,7 +9,6 @@ function App() {
   const [query, setQuery] = useState({ q: "Vancouver" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
-  const [error, setError] = useState(null);
 
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -29,7 +28,6 @@ function App() {
         units,
       });
       setSidebarWeather((prevData) => [...prevData, { data }]);
-      setError(null);
     };
 
     cities.map((city) => fetchWeatherSidebar(city));
@@ -39,7 +37,6 @@ function App() {
     const fetchWeather = async () => {
       const data = await getFormattedWeatherData({ ...query, units });
       setWeather(data);
-      setError(null);
     };
     fetchWeather();
   }, [query, units]);
