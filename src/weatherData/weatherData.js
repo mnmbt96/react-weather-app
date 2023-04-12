@@ -99,15 +99,6 @@ const getFormattedWeatherData = async (searchParams) => {
   return { ...formattedCurrentWeather, ...formattedForecastWeather };
 };
 
-const getFormattedWeatherDataForSidebar = async (searchParams) => {
-  const formattedCurrentWeatherForSidebar = await getWeatherData(
-    VERSION_25,
-    "weather",
-    searchParams
-  ).then(formatCurrentWeather);
-  return { ...formattedCurrentWeatherForSidebar };
-};
-
 const formatToLocalTime = (
   secs,
   zone,
@@ -118,5 +109,4 @@ const iconUrlFromCode = (code) =>
   `http://openweathermap.org/img/wn/${code}@2x.png`;
 
 export default getFormattedWeatherData;
-export { getFormattedWeatherDataForSidebar };
 export { formatToLocalTime, iconUrlFromCode };

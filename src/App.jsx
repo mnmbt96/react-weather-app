@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Forecast from "./components/forecast/Forecast";
 import Sidebar from "./components/sidebar/Sidebar";
 import getFormattedWeatherData from "./weatherData/weatherData";
-import { getFormattedWeatherDataForSidebar } from "./weatherData/weatherData";
 import "./App.css";
 
 function App() {
