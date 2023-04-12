@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     const fetchWeatherSidebar = async (city) => {
-      const data = await getFormattedWeatherDataForSidebar({
+      const data = await getFormattedWeatherData({
         ...city,
         units,
       });
@@ -53,7 +53,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (windowWidth < 550) {
+    if (windowWidth <= 550) {
       setSidebarOpen(false);
     } else {
       setSidebarOpen(true);
